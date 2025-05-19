@@ -1,0 +1,115 @@
+/* assets/css/authStyle.css */
+
+body {
+    background: url('../images/background.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+.brand {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo {
+    width: 80px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .brand h1 {
+    font-size: 24px;
+    color: #ff5e57;
+    margin: 0;
+  }
+.container {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #222;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    width: 340px;
+    box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px 16px;
+    margin: 10px 0;
+    border: 1.8px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.25s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0,123,255,0.4);
+}
+
+button {
+    width: 100%;
+    padding: 14px 0;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #555;
+}
+
+p a {
+    color: #007BFF;
+    font-weight: 600;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
