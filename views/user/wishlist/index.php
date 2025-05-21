@@ -19,7 +19,7 @@
             <?php foreach ($wishlistFoods as $food): ?>
                 <tr>
                     <td style="text-align: center;">
-                        <img src="/uploads/<?= htmlspecialchars($food['image']) ?>" alt="<?= htmlspecialchars($food['name']) ?>" width="100">
+                        <img src="/foodhunt/public/food/<?= htmlspecialchars($food['image_url']) ?>" alt="<?= htmlspecialchars($food['name']) ?>" width="100">
                     </td>
                     <td><?= htmlspecialchars($food['name']) ?></td>
                     <td><?= htmlspecialchars($food['description']) ?></td>

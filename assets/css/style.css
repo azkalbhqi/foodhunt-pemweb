@@ -449,6 +449,8 @@ h2 {
     font-size: 2em;
 }
 
+
+
 /* Chat Room */
 .chat-container {
     width: 90%;
@@ -566,6 +568,8 @@ h2 {
 }
 
 
+
+
   
   /* Tablet (481px–768px) */
   @media (min-width: 481px) and (max-width: 768px) {
@@ -595,5 +599,5 @@ h2 {
     }
   }
   
-  
+
   

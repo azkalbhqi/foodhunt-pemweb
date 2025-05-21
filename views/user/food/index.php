@@ -6,7 +6,7 @@
     <?php foreach ($foods as $food): ?>
         
         <div class="card">
-            <img src="uploads/<?= htmlspecialchars($food['image']) ?>" alt="<?= htmlspecialchars($food['name']) ?>" class="card-img">
+            <img src="/foodhunt/public/food/<?= htmlspecialchars($food['image_url']) ?>" alt="<?= htmlspecialchars($food['name']) ?>" class="card-img">
             <div class="card-body">
                 <h3><?= htmlspecialchars($food['name']) ?></h3>
                 <p><?= htmlspecialchars($food['description']) ?></p>
