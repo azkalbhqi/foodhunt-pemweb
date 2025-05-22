@@ -12,7 +12,7 @@
 
         <!-- Wishlist -->
         <form action="?route=user/food/wishlist" method="POST" style="display:inline;">
-            <input type="hidden" name="food_id" value="<?= $food['id'] ?>">
+            <input type="hidden" name="food_id" value="<?= htmlspecialchars($food['id']) ?>">
             <button type="submit" style="background:none; border:none; font-size:20px;">
                 <?= $is_wishlisted ? '❤️' : '🤍' ?> Wishlist
             </button>

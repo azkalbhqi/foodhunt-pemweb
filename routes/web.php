@@ -8,7 +8,9 @@ require_once __DIR__ . '/../controllers/PromoController.php';
 require_once __DIR__ . '/../controllers/ForumController.php';
 require_once __DIR__ . '/../controllers/FoodInteractionController.php';
 require_once __DIR__ . '/../controllers/WishlistController.php';
+require_once __DIR__ . '/../controllers/ProfileController.php';
 
+$profile = new ProfileController();
 $wishlist = new WishlistList();
 $foodInteract = new FoodInteraction();
 $forum = new ForumController();
@@ -141,7 +143,7 @@ elseif ($route === 'user/wishlist') {
 } elseif (preg_match('#event/show/(\d+)#', $route, $matches)) {
     $event->userShow($matches[1]);
 
-//Promo Routes
+
 // Admin routes
 }elseif ($route === 'admin/promo') {
     $promo->index();
@@ -160,7 +162,11 @@ elseif ($route === 'user/wishlist') {
 // User routes
 elseif ($route === 'user/promo') {
     $promo->index();
-} 
+} elseif ($route === 'user/profile') {
+    $profile->show();
+} elseif ($route === 'user/profile/update' && $method === 'POST') {
+    $profile->update();
+}
 
 //Forum chattt
 elseif ($route === 'user/forum') {

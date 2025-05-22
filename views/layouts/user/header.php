@@ -17,6 +17,7 @@
         <a href="?route=user/event">Event</a>
         <a href="?route=user/promo">Promo</a>
         <a href="?route=user/forum">Forum</a>
+        <a href="?route=user/profile">Profile</a>
         <a href="?route=auth/logout">Logout</a>
     </nav>
 </header>
