@@ -5,7 +5,7 @@
 <div class="feed showfood" >
     <br>
     <h2><?= htmlspecialchars($food['name']) ?></h2>
-    <img src="/foodhunt/public/food/<?= htmlspecialchars($food['image_url']) ?>" class="card-img" alt="<?= htmlspecialchars($food['name']) ?>">
+    <img src="public/food/<?= htmlspecialchars($food['image_url']) ?>" class="card-img" alt="<?= htmlspecialchars($food['name']) ?>">
     <div class="card-body">
         <p><?= htmlspecialchars($food['description']) ?></p>
         <strong>Rp<?= number_format($food['price'], 0, ',', '.') ?></strong>

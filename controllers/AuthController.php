@@ -12,50 +12,70 @@ class AuthController {
         include __DIR__ . '/../views/auth/register.php';
     }
 
-    public function login()
-{
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // Misal pakai User::findByUsername
-    $user = User::findByUsername($username);
-
-    if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['user'] = $user['username'];
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['role'] = $user['role']; // <-- penting untuk routing admin
-
-        if ($user['role'] === 'admin') {
-            header('Location: ?route=admin/dashboard');
+    public function login() {
+        $input = $_POST['usernameOrEmail'];
+        $password = $_POST['password'];
+    
+        // Cari user berdasarkan username atau email
+        $user = User::findByUsernameOrEmail($input);
+    
+        if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['user'] = $user['username'];
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['role'] = $user['role'];
+    
+            if ($user['role'] === 'admin') {
+                header('Location: ?route=admin/dashboard');
+            } else {
+                header('Location: ?route=user/dashboard');
+            }
+            exit;
         } else {
-            header('Location: ?route=user/dashboard');
+            echo "<script>
+                    alert('Login gagal! Username/email atau password salah.');
+                    window.location.href = '?route=auth/login';
+                  </script>";
+            exit;
         }
-        exit;
-    } else {
-        echo "Login gagal!";
     }
-}
+    
 
     public function register() {
         $username = $_POST['username'];
+        $email = $_POST['email'];
         $password = $_POST['password'];
     
+        // Cek apakah username sudah dipakai
         if (User::findByUsername($username)) {
-            // Username sudah dipakai, tampil pesan dan tombol kembali
-            echo "<p>Username sudah digunakan.</p>";
-            echo '<button onclick="window.history.back()">Kembali</button>';
-            return;
+            echo "<script>
+                    alert('gagal! Username sudah digunakan.');
+                    window.location.href = '?route=auth/login';
+                  </script>";
+            exit;
         }
     
-        if (User::create($username, $password)) {
-            // Registrasi sukses, redirect ke login
+        // Cek apakah email sudah dipakai (asumsi ada method findByEmail)
+        if (User::findByEmail($email)) {
+            echo "<script>
+                    alert(' gagal! Email sudah digunakan.');
+                    window.location.href = '?route=auth/login';
+                  </script>";
+            exit;
+        }
+    
+        // Buat user baru dengan username, email, dan password
+        if (User::create($username, $email, $password)) {
             header('Location: ?route=auth/login');
             exit;
         } else {
-            echo "<p>Registrasi gagal.</p>";
-            echo '<button onclick="window.history.back()">Kembali</button>';
+            echo "<script>
+                    alert(' Registrasi gagal!');
+                    window.location.href = '?route=auth/login';
+                  </script>";
+            exit;
         }
     }
+    
     
 
     public function logout() {

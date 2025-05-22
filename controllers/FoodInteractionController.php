@@ -13,19 +13,19 @@ class FoodInteraction {
         // Ambil semua wishlist user
         $wishlist_items = Wishlist::getByUser($user_id);
         $wishlist_ids = array_column($wishlist_items, 'food_id');
-        // Ambil rating user untuk tiap makanan (opsional)
-        $average_rating = [];
-       
-        // Ambil komentar untuk semua makanan
-        $comments = [];
+    
+        // Ambil rating dan komentar
+        $average_ratings = [];
+    
         foreach ($foods as &$food) {
-            // Asumsi ada method getAverageByFoodId di model Rating
             $average_ratings[$food['id']] = Rating::getAverageByFoodId($food['id']);
             $food['comments'] = Review::getAll($food['id']);
         }
+        unset($food); // penting saat foreach pakai referensi
     
         include __DIR__ . '/../views/user/food/index.php';
     }
+    
 
     public function toggleWishlist() {
         $user_id = $_SESSION['user_id'];

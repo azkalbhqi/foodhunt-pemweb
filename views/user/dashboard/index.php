@@ -41,12 +41,12 @@
 <!-- Action Buttons -->
 <div class="user-actions">
     <a href="?route=user/bundling" class="dashboard-card">
-        <img src="/foodhunt/public/assets/food-icon.png" alt="Paket Makan">
+        <img src="public/assets/food-icon.png" alt="Paket Makan">
         <h3>Paket Makan Spesial</h3>
         <p>Jelajahi bundling makanan hemat & lezat</p>
     </a>
     <a href="?route=user/wishlist" class="dashboard-card">
-        <img src="/foodhunt/public/assets/wishlist-icon.png" alt="Wishlist">
+        <img src="public/assets/wishlist-icon.png" alt="Wishlist">
         <h3>Wishlist Saya</h3>
         <p>Simpan makanan favoritmu dengan mudah</p>
     </a>

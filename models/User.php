@@ -22,6 +22,21 @@ class User {
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public static function findByEmail($email) {
+        $pdo = Database::getConnection();
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->execute([$email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function findByUsernameOrEmail($input) {
+        $pdo = Database::getConnection();
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? OR email = ? LIMIT 1");
+        $stmt->execute([$input, $input]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
     
     public static function update($id, $data) {
         $pdo = Database::getConnection();

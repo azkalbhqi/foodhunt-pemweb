@@ -8,7 +8,6 @@
 </head>
 <body>
   <div class="container">
-    <!-- Logo dan Branding -->
     <div class="brand">
       <img src="public/assets/logo.png" alt="FoodHunt Logo" class="logo">
       <h1>FoodHunt</h1>
@@ -27,7 +26,7 @@
       <input 
         type="text" 
         name="username" 
-        placeholder="Username" 
+        placeholder="Username atau Email" 
         required 
         value="<?= isset($_POST['username']) ? htmlspecialchars($_POST['username']) : '' ?>"
       ><br>

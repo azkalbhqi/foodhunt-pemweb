@@ -25,7 +25,7 @@
                     <td>Rp<?= number_format($food['price'], 0, ',', '.') ?></td>
                     <td>
                         <?php if ($food['image_url']): ?>
-                            <img src="/foodhunt/public/food/<?= htmlspecialchars($food['image_url']) ?>" alt="Gambar makanan" class="thumbnail">
+                            <img src="public/food/<?= htmlspecialchars($food['image_url']) ?>" alt="Gambar makanan" class="thumbnail">
                         <?php else: ?>
                             <span class="no-image">Tidak ada gambar</span>
                         <?php endif; ?>

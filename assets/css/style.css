@@ -655,6 +655,11 @@ h2 {
         
        
     }
+
+    nav{
+      display: flex;
+      flex-direction: column;
+    }
 }
 
 
@@ -673,7 +678,13 @@ h2 {
     .card-img {
       height: 180px;
     }
-  }
+
+    nav{
+      display: flex;
+      flex-direction: column;
+    }
+}
+  
   
   /* Desktop kecil-menengah (769px–1024px) */
   @media (min-width: 769px) and (max-width: 1024px) {
@@ -687,6 +698,8 @@ h2 {
     .card-img {
       height: 180px;
     }
+
+    
   }
   
 

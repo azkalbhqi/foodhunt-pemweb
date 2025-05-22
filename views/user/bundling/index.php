@@ -9,7 +9,7 @@
             <div class="bundle-card">
                 <div class="bundle-image">
                     <?php if ($bundle['image_url']): ?>
-                        <img src="/foodhunt/public/uploads/<?= htmlspecialchars($bundle['image_url']) ?>" alt="Gambar paket">
+                        <img src="public/uploads/<?= htmlspecialchars($bundle['image_url']) ?>" alt="Gambar paket">
                     <?php else: ?>
                         <div class="no-image">Tidak ada gambar</div>
                     <?php endif; ?>

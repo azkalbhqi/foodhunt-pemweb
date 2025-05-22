@@ -89,6 +89,20 @@ class EventController {
         include __DIR__ . '/../views/user/event/index.php';
     }
 
+    // Proses hapus event
+public function delete($id) {
+    $this->IsAdmin(); // Pastikan hanya admin yang bisa menghapus
+
+    $event = Event::find($id);
+    if (!$event) {
+        die('Event tidak ditemukan.');
+    }
+
+    Event::delete($id);
+    header('Location: ?route=admin/event');
+    exit;
+}
+
     // Tampilkan detail event ke user
     public function userShow($id) {
         $event = Event::find($id);

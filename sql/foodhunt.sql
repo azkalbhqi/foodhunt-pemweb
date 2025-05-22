@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2025 at 08:16 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Waktu pembuatan: 22 Bulan Mei 2025 pada 18.32
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bundle_items`
+-- Struktur dari tabel `bundle_items`
 --
 
 CREATE TABLE `bundle_items` (
@@ -36,7 +36,7 @@ CREATE TABLE `bundle_items` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bundling`
+-- Struktur dari tabel `bundling`
 --
 
 CREATE TABLE `bundling` (
@@ -51,7 +51,7 @@ CREATE TABLE `bundling` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `events`
+-- Struktur dari tabel `events`
 --
 
 CREATE TABLE `events` (
@@ -66,7 +66,7 @@ CREATE TABLE `events` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `foods`
+-- Struktur dari tabel `foods`
 --
 
 CREATE TABLE `foods` (
@@ -82,7 +82,7 @@ CREATE TABLE `foods` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `forum_messages`
+-- Struktur dari tabel `forum_messages`
 --
 
 CREATE TABLE `forum_messages` (
@@ -95,7 +95,7 @@ CREATE TABLE `forum_messages` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `promos`
+-- Struktur dari tabel `promos`
 --
 
 CREATE TABLE `promos` (
@@ -114,7 +114,7 @@ CREATE TABLE `promos` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ratings`
+-- Struktur dari tabel `ratings`
 --
 
 CREATE TABLE `ratings` (
@@ -128,7 +128,7 @@ CREATE TABLE `ratings` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `restaurants`
+-- Struktur dari tabel `restaurants`
 --
 
 CREATE TABLE `restaurants` (
@@ -146,7 +146,7 @@ CREATE TABLE `restaurants` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reviews`
+-- Struktur dari tabel `reviews`
 --
 
 CREATE TABLE `reviews` (
@@ -160,20 +160,21 @@ CREATE TABLE `reviews` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` enum('admin','user') NOT NULL DEFAULT 'user'
+  `role` enum('admin','user') NOT NULL DEFAULT 'user',
+  `email` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wishlists`
+-- Struktur dari tabel `wishlists`
 --
 
 CREATE TABLE `wishlists` (
@@ -188,7 +189,7 @@ CREATE TABLE `wishlists` (
 --
 
 --
--- Indexes for table `bundle_items`
+-- Indeks untuk tabel `bundle_items`
 --
 ALTER TABLE `bundle_items`
   ADD PRIMARY KEY (`id`),
@@ -196,38 +197,38 @@ ALTER TABLE `bundle_items`
   ADD KEY `food_id` (`food_id`);
 
 --
--- Indexes for table `bundling`
+-- Indeks untuk tabel `bundling`
 --
 ALTER TABLE `bundling`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `events`
+-- Indeks untuk tabel `events`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `foods`
+-- Indeks untuk tabel `foods`
 --
 ALTER TABLE `foods`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `forum_messages`
+-- Indeks untuk tabel `forum_messages`
 --
 ALTER TABLE `forum_messages`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `promos`
+-- Indeks untuk tabel `promos`
 --
 ALTER TABLE `promos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `restaurant_id` (`restaurant_id`);
 
 --
--- Indexes for table `ratings`
+-- Indeks untuk tabel `ratings`
 --
 ALTER TABLE `ratings`
   ADD PRIMARY KEY (`id`),
@@ -235,26 +236,26 @@ ALTER TABLE `ratings`
   ADD KEY `food_id` (`food_id`);
 
 --
--- Indexes for table `restaurants`
+-- Indeks untuk tabel `restaurants`
 --
 ALTER TABLE `restaurants`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `reviews`
+-- Indeks untuk tabel `reviews`
 --
 ALTER TABLE `reviews`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indexes for table `wishlists`
+-- Indeks untuk tabel `wishlists`
 --
 ALTER TABLE `wishlists`
   ADD PRIMARY KEY (`id`),
@@ -262,101 +263,101 @@ ALTER TABLE `wishlists`
   ADD KEY `food_id` (`food_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `bundle_items`
+-- AUTO_INCREMENT untuk tabel `bundle_items`
 --
 ALTER TABLE `bundle_items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `bundling`
+-- AUTO_INCREMENT untuk tabel `bundling`
 --
 ALTER TABLE `bundling`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `events`
+-- AUTO_INCREMENT untuk tabel `events`
 --
 ALTER TABLE `events`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `foods`
+-- AUTO_INCREMENT untuk tabel `foods`
 --
 ALTER TABLE `foods`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `forum_messages`
+-- AUTO_INCREMENT untuk tabel `forum_messages`
 --
 ALTER TABLE `forum_messages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `promos`
+-- AUTO_INCREMENT untuk tabel `promos`
 --
 ALTER TABLE `promos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `ratings`
+-- AUTO_INCREMENT untuk tabel `ratings`
 --
 ALTER TABLE `ratings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `restaurants`
+-- AUTO_INCREMENT untuk tabel `restaurants`
 --
 ALTER TABLE `restaurants`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `reviews`
+-- AUTO_INCREMENT untuk tabel `reviews`
 --
 ALTER TABLE `reviews`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `wishlists`
+-- AUTO_INCREMENT untuk tabel `wishlists`
 --
 ALTER TABLE `wishlists`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `bundle_items`
+-- Ketidakleluasaan untuk tabel `bundle_items`
 --
 ALTER TABLE `bundle_items`
   ADD CONSTRAINT `bundle_items_ibfk_1` FOREIGN KEY (`bundle_id`) REFERENCES `bundling` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `bundle_items_ibfk_2` FOREIGN KEY (`food_id`) REFERENCES `foods` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `promos`
+-- Ketidakleluasaan untuk tabel `promos`
 --
 ALTER TABLE `promos`
   ADD CONSTRAINT `promos_ibfk_1` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurants` (`id`);
 
 --
--- Constraints for table `ratings`
+-- Ketidakleluasaan untuk tabel `ratings`
 --
 ALTER TABLE `ratings`
   ADD CONSTRAINT `ratings_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `ratings_ibfk_2` FOREIGN KEY (`food_id`) REFERENCES `foods` (`id`);
 
 --
--- Constraints for table `wishlists`
+-- Ketidakleluasaan untuk tabel `wishlists`
 --
 ALTER TABLE `wishlists`
   ADD CONSTRAINT `wishlists_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),

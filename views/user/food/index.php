@@ -3,25 +3,28 @@
 <h2>Temukan Makanan Lezat</h2>
 
 <div class="feed">
-    <?php foreach ($foods as $food): ?>
-        
-        <div class="card">
-            <img src="/foodhunt/public/food/<?= htmlspecialchars($food['image_url']) ?>" alt="<?= htmlspecialchars($food['name']) ?>" class="card-img">
-            <div class="card-body">
-                <h3><?= htmlspecialchars($food['name']) ?></h3>
-                <p><?= htmlspecialchars($food['description']) ?></p>
-                <strong>Rp<?= number_format($food['price'], 0, ',', '.') ?></strong>
+    <?php if (empty($foods)): ?>
+        <p>Tidak ada makanan yang tersedia saat ini.</p>
+    <?php else: ?>
+        <?php foreach ($foods as $food): ?>
+            <div class="card">
+                <img src="public/food/<?= htmlspecialchars($food['image_url']) ?>">
+                <div class="card-body">
+                    <h3><?= htmlspecialchars($food['name']) ?></h3>
+                    <p><?= htmlspecialchars($food['description']) ?></p>
+                    <strong>Rp<?= number_format($food['price'], 0, ',', '.') ?></strong>
 
 
-                <!-- Rating (tampilan saja) -->
-                <p>Rating: <?= number_format($average_ratings[$food['id']] ?? 0, 1) ?> / 5</p>
+                    <!-- Rating (tampilan saja) -->
+                    <p>Rating: <?= number_format($average_ratings[$food['id']] ?? 0, 1) ?> / 5</p>
 
-                <div>
-                <a href="?route=user/food/show/<?= $food['id'] ?>">Lihat Makanan</a>
+                    <div>
+                    <a href="?route=user/food/show/<?= $food['id'] ?>">Lihat Makanan</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
+    <?php endif; ?>
 </div>
 
 <?php include __DIR__ . '/../../layouts/user/footer.php'; ?>

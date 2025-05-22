@@ -1,5 +1,5 @@
 
-
+<?php include __DIR__ . '/../../layouts/admin/header.php'; ?>
 <h2>Tambah Promo Baru</h2>
 
 <form id="promoForm" method="POST" action="?route=admin/promo/store">
