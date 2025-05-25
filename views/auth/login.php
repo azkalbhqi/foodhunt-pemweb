@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,32 +17,45 @@
     <h2>Login</h2>
 
     <?php if (isset($_SESSION['error'])): ?>
-      <div style="color:red; margin-bottom:10px;">
+      <div class="error-message">
         <?= htmlspecialchars($_SESSION['error']) ?>
         <?php unset($_SESSION['error']); ?>
       </div>
     <?php endif; ?>
 
-    <form method="POST" action="?route=auth/login">
+    <form method="POST" action="?route=auth/login" autocomplete="off">
       <input 
         type="text" 
-        name="username" 
+        name="usernameOrEmail" 
         placeholder="Username atau Email" 
         required 
-        value="<?= isset($_POST['username']) ? htmlspecialchars($_POST['username']) : '' ?>"
+        value="<?= isset($_POST['usernameOrEmail']) ? htmlspecialchars($_POST['usernameOrEmail']) : '' ?>"
       ><br>
 
       <input 
         type="password" 
         name="password" 
         placeholder="Password" 
+        id="passwordInput"
         required
+        value="<?= isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '' ?>"
       ><br>
+
+      <label>
+        <input type="checkbox" onclick="togglePassword()"> Tampilkan Password
+      </label>
 
       <button type="submit">Login</button>
     </form>
 
     <p>Belum punya akun? <a href="?route=auth/register">Daftar di sini</a></p>
   </div>
+
+  <script>
+    function togglePassword() {
+      const input = document.getElementById("passwordInput");
+      input.type = input.type === "password" ? "text" : "password";
+    }
+  </script>
 </body>
 </html>

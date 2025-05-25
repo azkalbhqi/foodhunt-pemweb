@@ -9,12 +9,13 @@ class User {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function create($username, $password, $role = 'user') {
+    public static function create($username, $email, $password, $role = 'user') {
         $pdo = Database::getConnection();
         $hash = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $pdo->prepare("INSERT INTO users (username, password, role) VALUES (?, ?, ?)");
-        return $stmt->execute([$username, $hash, $role]);
+        $stmt = $pdo->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
+        return $stmt->execute([$username, $email, $hash, $role]);
     }
+    
 
     public static function findById($id) {
         $pdo = Database::getConnection();
@@ -32,10 +33,11 @@ class User {
 
     public static function findByUsernameOrEmail($input) {
         $pdo = Database::getConnection();
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? OR email = ? LIMIT 1");
-        $stmt->execute([$input, $input]);
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE LOWER(username) = LOWER(?) OR LOWER(email) = LOWER(?)");
+        $stmt->execute([strtolower($input), strtolower($input)]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    
     
     
     public static function update($id, $data) {

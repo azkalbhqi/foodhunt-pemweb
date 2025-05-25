@@ -14,10 +14,10 @@ class AuthController {
 
     public function login() {
         $input = $_POST['usernameOrEmail'];
-        $password = $_POST['password'];
+        $password = trim($_POST['password']);
     
-        // Cari user berdasarkan username atau email
-        $user = User::findByUsernameOrEmail($input);
+        $user = User::findByUsernameOrEmail($input);  
+
     
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user'] = $user['username'];
@@ -32,12 +32,13 @@ class AuthController {
             exit;
         } else {
             echo "<script>
-                    alert('Login gagal! Username/email atau password salah.');
-                    window.location.href = '?route=auth/login';
+                alert('Login gagal! Username/email atau password salah.');
+                window.location.href = '?route=auth/login';
                   </script>";
             exit;
         }
     }
+    
     
 
     public function register() {
