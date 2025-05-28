@@ -1,30 +1,20 @@
 <?php include __DIR__ . '/../../layouts/admin/header.php'; ?>
 
-<div class="container mt-4">
-    <h2>Edit Event Kuliner</h2>
-    <form action="?route=admin/event/update/<?= $event['id'] ?>" method="POST">
-        <div class="mb-3">
-            <label for="title" class="form-label">Nama Event</label>
-            <input type="text" class="form-control" id="title" name="title" value="<?= htmlspecialchars($event['title']) ?>" required>
-        </div>
+<h2>Edit Event Kuliner</h2>
 
-        <div class="mb-3">
-            <label for="event_date" class="form-label">Tanggal</label>
-            <input type="date" class="form-control" id="event_date" name="event_date" value="<?= htmlspecialchars($event['event_date']) ?>" required>
-        </div>
+<div class="container-form-and-lists"> <form action="?route=admin/event/update/<?= $event['id'] ?>" method="POST" class="modern-form"> <label for="title">Nama Event</label>
+        <input type="text" id="title" name="title" value="<?= htmlspecialchars($event['title']) ?>" required>
 
-        <div class="mb-3">
-            <label for="location" class="form-label">Lokasi</label>
-            <input type="text" class="form-control" id="location" name="location" value="<?= htmlspecialchars($event['location']) ?>" required>
-        </div>
+        <label for="event_date">Tanggal</label>
+        <input type="date" id="event_date" name="event_date" value="<?= htmlspecialchars($event['event_date']) ?>" required>
 
-        <div class="mb-3">
-            <label for="description" class="form-label">Deskripsi</label>
-            <textarea class="form-control" id="description" name="description" rows="4" required><?= htmlspecialchars($event['description']) ?></textarea>
-        </div>
+        <label for="location">Lokasi</label>
+        <input type="text" id="location" name="location" value="<?= htmlspecialchars($event['location']) ?>" required>
 
-        <button type="submit" class="btn btn-primary">Update Event</button>
-        <a href="?route=admin/event" class="btn btn-secondary">Kembali</a>
+        <label for="description">Deskripsi</label>
+        <textarea id="description" name="description" rows="5" required><?= htmlspecialchars($event['description']) ?></textarea>
+
+        <div class="form-actions"> <button type="submit" class="button">Update Event</button> <a href="?route=admin/event" class="button-link">Kembali</a> </div>
     </form>
 </div>
 

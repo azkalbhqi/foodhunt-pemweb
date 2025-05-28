@@ -13,9 +13,10 @@ class EventController {
         $events = Event::all();
 
         if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+            $headTitles = 'Admin event';
             include __DIR__ . '/../views/user/event/index.php';
         }else{
-
+            $headTitles = 'Event Makanan';
             include __DIR__ . '/../views/admin/event/index.php';
         }
     }
@@ -23,6 +24,7 @@ class EventController {
     // Tampilkan form tambah event
     public function create() {
         $this->IsAdmin();
+        $headTitles = 'Tambah Event';
         include __DIR__ . '/../views/admin/event/create.php';
     }
 
@@ -53,6 +55,7 @@ class EventController {
         if (!$event) {
             die('Event tidak ditemukan.');
         }
+        $headTitles = 'Edit Event';
         include __DIR__ . '/../views/admin/event/edit.php';
     }
 

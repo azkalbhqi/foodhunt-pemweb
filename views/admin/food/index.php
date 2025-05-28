@@ -6,8 +6,7 @@
     <a href="?route=admin/food/create" class="btn-primary">+ Tambah Makanan</a>
 </div>
 
-<div class="table-wrapper">
-    <table class="styled-table">
+<div class="table-container"> <table class="styled-table">
         <thead>
             <tr>
                 <th>Nama</th>
@@ -18,24 +17,28 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($foods as $food): ?>
+            <?php if (!empty($foods)): ?> <?php foreach ($foods as $food): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($food['name']) ?></td>
+                        <td><?= htmlspecialchars($food['description']) ?></td>
+                        <td>Rp<?= number_format($food['price'], 0, ',', '.') ?></td>
+                        <td>
+                            <?php if ($food['image_url']): ?>
+                                <img src="public/food/<?= htmlspecialchars($food['image_url']) ?>" alt="Gambar makanan" class="thumbnail">
+                            <?php else: ?>
+                                <span class="no-image">Tidak ada gambar</span>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <a href="?route=admin/food/edit/<?= $food['id'] ?>" class="btn-action edit">Edit</a>
+                            <a href="?route=admin/food/delete/<?= $food['id'] ?>" class="btn-action delete" onclick="return confirm('Yakin ingin menghapus makanan ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
                 <tr>
-                    <td><?= htmlspecialchars($food['name']) ?></td>
-                    <td><?= htmlspecialchars($food['description']) ?></td>
-                    <td>Rp<?= number_format($food['price'], 0, ',', '.') ?></td>
-                    <td>
-                        <?php if ($food['image_url']): ?>
-                            <img src="public/food/<?= htmlspecialchars($food['image_url']) ?>" alt="Gambar makanan" class="thumbnail">
-                        <?php else: ?>
-                            <span class="no-image">Tidak ada gambar</span>
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <a href="?route=admin/food/edit/<?= $food['id'] ?>" class="btn-action edit">Edit</a>
-                        <a href="?route=admin/food/delete/<?= $food['id'] ?>" class="btn-action delete" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
+                    <td colspan="5" class="empty-data">Belum ada data makanan.</td> </tr>
+            <?php endif; ?>
         </tbody>
     </table>
 </div>

@@ -36,4 +36,10 @@ class Event {
         $stmt = $db->prepare("DELETE FROM events WHERE id=?");
         return $stmt->execute([$id]);
     }
+
+    public static function getTotalEvents() {
+        $db = Database::getConnection(); // Mendapatkan koneksi setiap kali dipanggil
+        $stmt = $db->query("SELECT COUNT(*) AS total FROM events");
+        return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+    }
 }

@@ -9,7 +9,47 @@ class ProfileController {
         }
 
         $user = User::findByUsername($_SESSION['user']);
+        $headTitles = "profile manage";
         include __DIR__ . '/../views/user/profile/index.php';
+    }
+
+    public function showAdmin() {
+        if (!isset($_SESSION['user'])) {
+            header('Location: ?route=auth/login');
+            exit;
+        }
+
+        $user = User::findByUsername($_SESSION['user']);
+        $headTitles = "profile manage";
+        include __DIR__ . '/../views/admin/profile/index.php';
+    }
+
+    public function updateAdmin() {
+        if (!isset($_SESSION['user'])) {
+            header('Location: ?route=auth/login');
+            exit;
+        }
+    
+        $userData = User::findByUsername($_SESSION['user']);
+        $id = $userData['id'];
+    
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+    
+        $data = ['username' => $username];
+    
+        if (!empty($password)) {
+            $data['password'] = password_hash($password, PASSWORD_DEFAULT);
+        }
+    
+        if (User::update($id, $data)) {
+            $_SESSION['user'] = $username; // <- update session user agar langsung aktif
+            $_SESSION['success'] = 'Profil berhasil diperbarui.';
+        } else {
+            $_SESSION['error'] = 'Gagal memperbarui profil.';
+        }
+    
+        header('Location: ?route=admin/profile');
     }
 
     public function update() {

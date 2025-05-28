@@ -1,175 +1,349 @@
 /* assets/css/style.css */
 
-/* Reset dasar */
+/* --- 1. RESET DASAR DAN FONT GLOBAL --- */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f8f8;
-    color: #333;
-    line-height: 1.6;
-  }
-  
-  /* Header */
-  header {
-    background-color: #ff5e57;
-    color: white;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  
-  header h1 {
-    font-size: 24px;
-  }
-  
-  /* Navigation */
-  nav {
-    margin-top: 10px;
-  }
-  
-  nav a {
-    color: white;
-    text-decoration: none;
-    margin-right: 15px;
-    font-weight: 500;
-    padding: 6px 10px;
-    border-radius: 5px;
-    transition: background-color 0.2s;
-  }
-  
-  nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  
-  /* Container untuk isi halaman */
-  .container {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-  }
-  
-  /* Feed container (daftar makanan) */
-  .feed {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 20px;
-    justify-content: center; /* Supaya kartu center */
-  }
-  
-  /* Kartu makanan */
-  .card {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    flex: 1 1 280px; /* fleksibel, minimal 280px */
-    max-width: 320px; /* maksimal lebar */
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-  
-  /* Supaya gambar dan body tetap proporsional */
-  .card-img {
-    width: 100%;
-    object-fit: cover;
-    border-radius: 0;
-    height: 180px;
-    margin: 0;
-    flex-shrink: 0;
-  }
-  
-  .card-body {
-    padding: 15px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .card-body h3 {
-    font-size: 18px;
-    margin-bottom: 8px;
-  }
-  
-  .card-body p {
-    font-size: 14px;
-    margin-bottom: 10px;
-    color: #555;
-    font-weight: normal;
-  }
-  
-  .card-body strong {
-    display: block;
-    margin-bottom: 10px;
-    color: #e74c3c;
-  }
-  
-  /* Tombol/link diposisikan di bawah */
-  .card-body a {
-    margin-top: auto;
-    display: inline-block;
-    background-color: #ff5e57;
-    color: #fff;
-    padding: 8px 14px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 14px;
-    transition: background-color 0.2s ease;
-  }
-  
-  .card-body a:hover {
-    background-color: #e74c3c;
-  }
-  
-  /* Container dan Header */
-.profile-container {
-  max-width: 500px;
-  margin: 50px auto;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif; /* Menggunakan Poppins untuk konsistensi */
+  background-color: #f8f8f8; /* Warna latar belakang umum */
+  color: #333;
+  line-height: 1.6;
+  scroll-behavior: smooth; /* Scroll halus */
+}
+
+/* --- 2. HEADER DAN NAVIGASI --- */
+header {
+  background-color: #ff5e57; /* Warna utama Foodhunt */
+  color: white;
+  padding: 15px 25px; /* Sedikit lebih padat */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-size: 26px; /* Sedikit lebih besar */
+  font-weight: 700; /* Lebih tebal */
+  margin: 0; /* Pastikan tidak ada margin tambahan */
+}
+
+nav {
+  margin-top: 0; /* Hapus margin top, gunakan flexbox */
+  display: flex; /* Untuk menata link secara horizontal */
+  gap: 15px; /* Jarak antar link navigasi */
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 15px; /* Padding lebih baik */
+  border-radius: 6px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px); /* Efek sedikit naik */
+}
+
+/* --- 3. CONTAINER UTAMA ISI HALAMAN --- */
+.container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 25px; /* Padding sedikit lebih besar */
+  background-color: white;
+  border-radius: 15px; /* Sudut lebih membulat */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Bayangan lebih jelas */
+}
+
+/* --- 4. DAFTAR MAKANAN (FEED) --- */
+.feed {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px; /* Jarak antar kartu lebih besar */
+  margin-top: 30px; /* Jarak dari elemen atas */
+  justify-content: center;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px; /* Konsisten dengan container */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Bayangan lebih kuat */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1 1 290px; /* Fleksibel, min 290px */
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-8px); /* Lebih naik saat hover */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18); /* Bayangan lebih kuat */
+}
+
+.card-img {
+  width: 100%;
+  object-fit: cover;
+  height: 200px; /* Tinggi gambar sedikit ditingkatkan */
+  flex-shrink: 0;
+  border-top-left-radius: 15px; /* Sudut membulat pada gambar */
+  border-top-right-radius: 15px;
+}
+
+.card-body {
+  padding: 20px; /* Padding lebih besar */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body h3 {
+  font-size: 20px; /* Ukuran judul */
+  margin-bottom: 10px;
+  color: #333; /* Warna standar */
+}
+
+.card-body p {
+  font-size: 15px;
+  margin-bottom: 12px;
+  color: #666; /* Warna abu-abu yang lebih lembut */
+}
+
+.card-body strong {
+  display: block;
+  margin-top: auto; /* Dorong ke bawah */
+  margin-bottom: 15px;
+  color: #ff5e57; /* Warna harga, konsisten dengan header */
+  font-size: 1.1em; /* Ukuran harga */
+  font-weight: 700;
+}
+
+.card-body a {
+  display: inline-block;
+  background-color: #ff5e57;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 10px; /* Lebih membulat */
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.card-body a:hover {
+  background-color: #e74c3c;
+  transform: translateY(-2px);
+}
+
+/* --- 5. DETAIL MAKANAN (showfood) --- */
+.showfood {
+  max-width: 700px; /* Lebih lebar untuk detail */
+  margin: 30px auto;
   padding: 30px;
   background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', sans-serif;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  text-align: left; /* Teks rata kiri */
+}
+
+.showfood h2 {
+  font-size: 2.2em;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center; /* Judul tetap di tengah */
+}
+
+.showfood .card-img { /* Khusus untuk gambar di detail */
+  height: 350px; /* Gambar lebih besar */
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.showfood .card-body { /* Menimpa gaya card-body umum */
+  padding: 0; /* Hapus padding jika sudah di .showfood */
+  display: block; /* Kembalikan ke block normal */
+}
+
+.showfood .card-body p {
+  font-size: 1.05em;
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.showfood .card-body strong {
+  font-size: 1.3em;
+  color: #ff5e57;
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* Wishlist Button */
+.showfood form[action*="wishlist"] button {
+  background: none;
+  border: none;
+  font-size: 24px; /* Ikon lebih besar */
+  cursor: pointer;
+  color: #ff5e57; /* Warna ikon hati */
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Jarak antara ikon dan teks */
+  transition: transform 0.2s ease;
+}
+
+.showfood form[action*="wishlist"] button:hover {
+  transform: scale(1.1);
+}
+
+/* Rating Display */
+.showfood p:nth-of-type(2) { /* Rating: X / 5 */
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Rating Form */
+.showfood form[action*="rate"] {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.showfood form[action*="rate"] label {
+  font-weight: 600;
+  color: #333;
+}
+
+.showfood form[action*="rate"] select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  background-color: #fdfdfd;
+  cursor: pointer;
+  appearance: none; /* Sembunyikan default arrow */
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M287%2069.9a14.2%2014.2%200%200%00-20.2%200l-123.6%20123.6L20.2%2069.9a14.2%2014.2%200%200%00-20.2%2020.2l133.7%20133.7c5.8%205.8%2015.2%205.8%2021%200L287%2090.1a14.2%2014.2%200%200%000-20.2z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 8px top 50%;
+  background-size: 12px auto;
+}
+
+/* Reviews/comments section */
+.reviews {
+  margin-top: 30px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.reviews h4 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.reviews div {
+  background: #fdfdfd;
+  padding: 12px 18px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #444;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+  border: 1px solid #eee; /* Sedikit border */
+}
+
+.reviews div strong {
+  color: #ff5e57;
+  margin-right: 5px;
+}
+
+/* Komentar form */
+.showfood form[action*="comment"] {
+  margin-top: 25px;
+}
+
+.showfood form[action*="comment"] textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 12px;
+  font-size: 1em;
+  resize: vertical;
+  min-height: 80px; /* Tinggi minimum */
+  margin-bottom: 15px;
+  transition: border-color 0.2s ease;
+}
+
+.showfood form[action*="comment"] textarea:focus {
+  border-color: #ff5e57;
+  outline: none;
+}
+
+.showfood form[action*="comment"] button[type="submit"] {
+  background-color: #ff5e57;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.showfood form[action*="comment"] button[type="submit"]:hover {
+  background-color: #e74c3c;
+  transform: translateY(-2px);
+}
+
+
+/* --- 6. PROFIL PENGGUNA --- */
+.profile-container {
+  max-width: 550px; /* Sedikit lebih lebar */
+  margin: 50px auto;
+  padding: 35px; /* Padding lebih banyak */
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* Bayangan lebih dalam */
 }
 
 .profile-header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 .profile-logo {
-  width: 60px;
+  width: 70px; /* Logo lebih besar */
   height: auto;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .profile-title {
-  font-size: 24px;
+  font-size: 28px; /* Judul lebih besar */
   color: #333;
+  font-weight: 700;
 }
 
 /* Alert Message */
 .profile-alert {
-  padding: 12px 15px;
-  border-radius: 6px;
-  margin-bottom: 20px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
   font-weight: 500;
+  font-size: 0.95em;
+  line-height: 1.5;
 }
 
 .profile-alert-success {
@@ -188,519 +362,653 @@
 .profile-form {
   display: flex;
   flex-direction: column;
+  gap: 15px; /* Jarak antar input */
 }
 
 .profile-form-label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   font-weight: 600;
   color: #555;
+  font-size: 0.95em;
 }
 
 .profile-form-input {
-  padding: 10px 12px;
-  border: 1.5px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: border-color 0.3s ease;
+  padding: 12px 15px;
+  border: 1px solid #ddd; /* Border lebih lembut */
+  border-radius: 10px;
+  font-size: 17px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-form-input:focus {
-  border-color: #007bff;
+  border-color: #ff5e57; /* Warna border fokus */
+  box-shadow: 0 0 0 3px rgba(255, 94, 87, 0.2); /* Efek glow */
   outline: none;
 }
 
 /* Button */
 .profile-btn {
-  background-color: #007bff;
+  background-color: #ff5e57;
   color: white;
-  padding: 12px 18px;
+  padding: 14px 25px;
   border: none;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 17px;
+  font-weight: 600;
   cursor: pointer;
-  margin-top: 15px;
-  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .profile-btn:hover {
-  background-color: #0056b3;
+  background-color: #e74c3c;
+  transform: translateY(-2px);
 }
 
-  /* Reviews/comments section */
-  .reviews h4 {
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .reviews div {
-    background: #fafafa;
-    padding: 10px 15px;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #444;
-    box-shadow: inset 0 0 3px rgba(0,0,0,0.05);
-  }
-  
-  /* Komentar form */
-  .card-body form textarea {
-    width: 100%;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    font-size: 14px;
-    resize: vertical;
-    margin-bottom: 10px;
-  }
-  
-  .card-body form button[type="submit"] {
-    background-color: #ff5e57;
-    color: white;
-    border: none;
-    padding: 10px 18px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .card-body form button[type="submit"]:hover {
-    background-color: #e74c3c;
-  }
-
-  .bundle-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 20px;
+/* --- 7. BUNDLE MAKANAN --- */
+.bundle-container {
+  display: grid; /* Menggunakan grid */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+  justify-content: center;
 }
 
 .bundle-card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    width: 300px;
-    overflow: hidden;
-    background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+  border: 1px solid #eee; /* Border lebih lembut */
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .bundle-card:hover {
-    transform: scale(1.02);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 .bundle-image img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
+  width: 100%;
+  height: 200px; /* Tinggi gambar konsisten */
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .no-image {
-    width: 100%;
-    height: 180px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #eee;
-    color: #666;
-    font-style: italic;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* Warna abu-abu yang lebih cerah */
+  color: #888;
+  font-style: italic;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .bundle-content {
-    padding: 15px;
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .bundle-content h3 {
-    margin: 0 0 10px;
-    font-size: 18px;
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #333;
 }
 
 .bundle-content .price {
-    color: #e91e63;
-    font-weight: bold;
-    margin: 5px 0;
+  color: #ff5e57; /* Warna harga konsisten */
+  font-weight: bold;
+  margin: 10px 0 15px;
+  font-size: 1.2em;
+  margin-top: auto; /* Dorong ke bawah */
 }
 
 .bundle-content .items {
-    margin-top: 10px;
-    font-size: 14px;
+  margin-top: 10px;
+  font-size: 15px;
+  color: #666;
 }
+
+/* --- 8. PROMO --- */
 .promo-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 20px;
+  display: grid; /* Menggunakan grid */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+  justify-content: center;
 }
 
 .promo-card {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 15px;
-    width: 280px;
-    background-color: #fdfdfd;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+  border: 1px solid #eee;
+  border-radius: 15px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .promo-card:hover {
-    transform: scale(1.02);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
 }
 
 .promo-card h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: #333;
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 20px;
+  color: #333;
 }
 
 .promo-card p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #555;
+  margin: 8px 0;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.5;
 }
 
 .promo-card strong {
-    color: #111;
+  color: #ff5e57;
+  font-weight: 700;
 }
 
-  
-  /* Responsive */
-  
-  /* Mobile kecil (≤480px) */
-  @media (max-width: 480px) {
-    .feed {
-      justify-content: center;
-      gap: 15px;
-    }
-    .card {
-      flex: 1 1 100%; /* full width */
-      max-width: 100%;
-    }
-    .card-img {
-      height: 160px;
-    }
-  }
-
-  .event-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 20px;
+/* --- 9. EVENT KULINER (Integrasi dari events.css) --- */
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 0; /* Hapus padding karena sudah di container */
+  /* max-width: 1200px; - Ini sudah diatur oleh .container */
+  /* margin: 0 auto; - Ini sudah diatur oleh .container */
 }
 
 .event-card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #fff;
-    padding: 15px;
-    width: 300px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+  background-color: #fff;
+  border-radius: 15px; /* Konsisten */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .event-card:hover {
-    transform: scale(1.02);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
-.event-card h3 {
-    margin: 0 0 10px;
-    font-size: 18px;
-    color: #333;
+.event-card-header {
+  background-color: #ff5e57; /* Warna merah utama */
+  color: #fff;
+  padding: 18px 20px; /* Sedikit lebih tinggi */
+  text-align: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
-.event-card p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #555;
+.event-card-header h3 {
+  margin: 0;
+  font-size: 1.6em; /* Sedikit lebih besar */
+  font-weight: 700;
 }
 
-.event-card strong {
-    color: #222;
+.event-card-body {
+  padding: 20px;
+  flex-grow: 1;
 }
 
-
-/* dashboard */
-/* user_dashboard.css */
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to right, #fffefb, #fef3e7);
-    margin: 0;
-    padding: 0;
-    color: #333;
+.event-card-body p {
+  margin-bottom: 12px;
+  font-size: 1em;
+  color: #555;
 }
 
-/* Hero Section */
+.event-card-body strong {
+  color: #333;
+}
+
+.event-description {
+  font-style: italic;
+  color: #666;
+  margin-top: 15px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.no-events-message {
+  text-align: center;
+  grid-column: 1 / -1;
+  font-size: 1.1em;
+  color: #777;
+  padding: 40px 20px;
+  background-color: #fdfdfd;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* --- 10. DASHBOARD PENGGUNA (user_dashboard.css) --- */
 .welcome-section {
-    background: linear-gradient(135deg, #ffa07a, #ff6347);
-    color: white;
-    padding: 60px 20px;
-    text-align: center;
-    border-radius: 0 0 40px 40px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, #ff8c6b, #ff5e57); /* Gradien lebih lembut */
+  color: white;
+  padding: 70px 20px; /* Padding lebih besar */
+  text-align: center;
+  border-radius: 0 0 50px 50px; /* Lebih membulat */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
 .welcome-section h2 {
-    font-size: 2.5em;
-    color: white;
-    margin-bottom: 10px;
+  font-size: 3em; /* Lebih besar */
+  color: white;
+  margin-bottom: 15px;
+  font-weight: 800;
 }
 
 .welcome-section p {
-    font-size: 1.2em;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* Section Styling */
-.container {
-    padding: 40px 20px;
-    max-width: 1000px;
-    margin: auto;
+  font-size: 1.3em; /* Lebih besar */
+  max-width: 700px;
+  margin: 0 auto;
+  font-weight: 300;
 }
 
 .intro-text {
-    margin-bottom: 40px;
+  margin-top: 40px; /* Jarak dari atas container */
+  margin-bottom: 40px;
+  padding: 0 20px; /* Padding samping */
 }
 
 .intro-text h3 {
-    font-size: 1.8em;
-    color: #ff6347;
-    margin-bottom: 10px;
+  font-size: 2em; /* Lebih besar */
+  color: #ff5e57; /* Warna utama */
+  margin-bottom: 15px;
+  font-weight: 700;
 }
 
 .intro-text p {
-    font-size: 1.05em;
-    line-height: 1.6;
-    color: #555;
+  font-size: 1.1em;
+  line-height: 1.7;
+  color: #555;
 }
 
-/* Feature List */
 .intro-text ul {
-    font-size: 1em;
-    margin-top: 10px;
+  font-size: 1em;
+  margin-top: 15px;
+  margin-left: 20px; /* Indentasi daftar */
+  color: #555;
 }
 
 /* Cards Section */
 .user-actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding: 40px 20px;
+  display: grid; /* Gunakan grid */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 0 20px; /* Padding samping */
 }
 
 .dashboard-card {
-    background: white;
-    border-radius: 16px;
-    padding: 30px;
-    width: 280px;
-    text-align: center;
-    text-decoration: none;
-    color: #333;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+  border-radius: 20px; /* Lebih membulat */
+  padding: 35px; /* Padding lebih besar */
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1); /* Bayangan lebih dalam */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .dashboard-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+  transform: translateY(-12px); /* Lebih naik saat hover */
+  box-shadow: 0 25px 40px rgba(0,0,0,0.2);
 }
 
 .dashboard-card img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 15px;
+  width: 70px; /* Ikon lebih besar */
+  height: 70px;
+  margin-bottom: 20px;
 }
 
 .dashboard-card h3 {
-    font-size: 1.4em;
-    color: #ff6347;
-    margin-bottom: 10px;
+  font-size: 1.6em; /* Lebih besar */
+  color: #ff5e57;
+  margin-bottom: 12px;
+  font-weight: 700;
 }
 
 .dashboard-card p {
-    font-size: 1em;
-    color: #666;
+  font-size: 1.05em;
+  color: #666;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #fdfaf6;
-    margin: 0;
-    padding: 0;
-}
-
-h2 {
-    text-align: center;
-    color: #ff6347;
-    margin-top: 30px;
-    font-size: 2em;
-}
-
-
-
-/* Chat Room */
+/* --- 11. CHAT ROOM (Admin Forum) --- */
 .chat-container {
-    width: 90%;
-    max-width: 800px;
-    margin: 30px auto;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    padding: 20px;
+  width: 95%; /* Lebih lebar */
+  max-width: 900px; /* Maksimum lebih besar */
+  margin: 40px auto;
+  background: white;
+  border-radius: 18px; /* Lebih membulat */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 30px;
 }
+
+h2 { /* Menimpa h2 yang lebih umum */
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2.2em;
+  font-weight: 700;
+}
+
 
 /* Chat Messages Area */
-.chat-box {
-    border: 1px solid #ddd;
+#chat-container { /* Menggunakan ID karena di HTML Anda pakai ID */
+  border: 1px solid #e0e0e0; /* Border lebih lembut */
+  padding: 15px;
+  height: 350px; /* Lebih tinggi */
+  overflow-y: auto;
+  border-radius: 12px;
+  background: #fcfcfc;
+  margin-bottom: 20px; /* Jarak dari form */
+}
+
+/* Style untuk setiap pesan chat */
+#chat-container > div {
+  margin-bottom: 15px; /* Jarak antar pesan */
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: #f0f0f0; /* Background pesan default */
+  position: relative;
+  word-wrap: break-word; /* Pastikan teks panjang tidak meluber */
+}
+
+/* Style untuk pesan Admin (jika ada class 'admin-message' di div-nya) */
+/* Saya asumsikan Anda menambahkan class 'admin-message' ke div pesan admin di PHP,
+ jika tidak, Anda bisa menggunakan `div[id*="message-"]` dengan selector untuk nama user
+ seperti yang kita bahas sebelumnya, atau cukup style global saja */
+#chat-container > div.admin-message { /* Contoh: jika Anda menambahkan class `admin-message` */
+  background-color: #e0f2f7; /* Warna lain untuk pesan admin */
+  margin-left: auto; /* Dorong ke kanan */
+  text-align: right; /* Rata kanan */
+}
+
+
+#chat-container strong {
+  font-weight: 600;
+  color: #333;
+}
+
+#chat-container small {
+  display: block;
+  font-size: 0.85em;
+  color: #888;
+  margin-top: 4px;
+}
+
+#chat-container p {
+  margin-top: 8px;
+  margin-bottom: 0;
+  line-height: 1.5;
+  color: #444;
+}
+
+#chat-container hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 15px 0;
+}
+
+/* Tombol hapus dalam chat */
+#chat-container button.delete-message-btn {
+  color: #ff5e57; /* Warna merah */
+  background: none;
+  border: none;
+  font-size: 0.85em;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 5px;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+#chat-container button.delete-message-btn:hover {
+  color: #e74c3c;
+}
+
+
+/* Chat Form */
+form[action*="forum/store"] { /* Menargetkan form chat */
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form[action*="forum/store"] label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+form[action*="forum/store"] textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  min-height: 70px;
+  font-size: 1em;
+  font-family: inherit;
+  background: #fff;
+  transition: border-color 0.2s ease;
+}
+
+form[action*="forum/store"] textarea:focus {
+  border-color: #ff5e57;
+  outline: none;
+}
+
+form[action*="forum/store"] input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  background: #f9f9f9;
+  color: #555;
+  cursor: not-allowed; /* Untuk readonly input */
+}
+
+form[action*="forum/store"] button {
+  background-color: #ff5e57;
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-size: 1.05em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form[action*="forum/store"] button:hover {
+  background-color: #e5533d;
+  transform: translateY(-2px);
+}
+
+
+/* --- 12. RESPONSIVITAS --- */
+@media screen and (max-width: 768px) {
+  header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 15px 20px;
+  }
+  nav {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 15px;
+      gap: 8px;
+  }
+  nav a {
+      padding: 6px 10px;
+      width: 100%; /* Link mengisi lebar penuh */
+  }
+  .container {
+      margin: 20px auto;
+      padding: 15px;
+      border-radius: 10px;
+  }
+  .feed, .bundle-container, .promo-container, .event-grid, .user-actions {
+      gap: 15px;
+  }
+  .card, .bundle-card, .promo-card, .event-card, .dashboard-card {
+      flex: 1 1 100%; /* Satu kolom di layar kecil */
+      max-width: 100%;
+      margin-bottom: 15px; /* Jarak antar kartu vertikal */
+  }
+  .card-img, .bundle-image img {
+      height: 180px;
+  }
+  .welcome-section {
+      padding: 40px 15px;
+      border-radius: 0 0 30px 30px;
+  }
+  .welcome-section h2 {
+      font-size: 2.5em;
+  }
+  .welcome-section p {
+      font-size: 1.1em;
+  }
+  .intro-text h3 {
+      font-size: 1.6em;
+  }
+  .intro-text p, .intro-text ul {
+      font-size: 0.95em;
+  }
+  .dashboard-card {
+      padding: 25px;
+      border-radius: 15px;
+  }
+  .dashboard-card img {
+      width: 50px;
+      height: 50px;
+  }
+  .dashboard-card h3 {
+      font-size: 1.3em;
+  }
+  #chat-box { /* Menggunakan ID karena di HTML Anda pakai ID */
+    border: 1px solid #e0e0e0; /* Border lebih lembut */
     padding: 15px;
-    height: 300px;
+    height: 350px; /* Lebih tinggi */
     overflow-y: auto;
-    border-radius: 10px;
-    background: #fafafa;
+    border-radius: 12px;
+    background: #fcfcfc;
+    margin-bottom: 20px; /* Jarak dari form */
+    display: flex; /* Gunakan flexbox untuk menata pesan */
+    flex-direction: column; /* Pesan tersusun vertikal */
 }
 
 .chat-message {
-    margin-bottom: 20px;
-    max-width: 70%;
-    padding: 12px 16px;
-    border-radius: 12px;
+    margin-bottom: 15px; /* Jarak antar pesan */
+    max-width: 70%; /* Lebar maksimum pesan */
+    padding: 12px 18px; /* Padding lebih nyaman */
+    border-radius: 18px; /* Sudut lebih membulat */
     position: relative;
-    background-color: #ffe4d2;
-    word-wrap: break-word;
+    word-wrap: break-word; /* Pastikan teks panjang tidak meluber */
+    line-height: 1.5;
+    align-self: flex-start; /* Default: dorong ke kiri (untuk user) */
+    background-color: #e6e6e6; /* Warna default untuk user messages */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Bayangan lembut */
 }
 
 .chat-message strong {
     font-weight: 600;
     color: #333;
+    display: block; /* Agar nama user di baris sendiri */
+    margin-bottom: 5px; /* Jarak antara nama dan pesan */
+}
+
+.chat-message p {
+    margin: 0; /* Hapus margin default p */
+    color: #444;
 }
 
 .chat-message small {
     display: block;
     font-size: 0.8em;
     color: #888;
-    margin-top: 4px;
+    margin-top: 8px; /* Jarak antara pesan dan timestamp */
+    text-align: right; /* Timestamp di kanan */
 }
 
-.chat-message.user {
-    background-color: #ffd3b6;
-    margin-left: auto;
-    text-align: right;
+/* --- ATURAN KHUSUS UNTUK PESAN ADMIN --- */
+.chat-message.admin-message {
+    background-color: #d4edda; /* Warna hijau lembut untuk admin */
+    align-self: flex-end; /* Dorong ke kanan */
+    color: #155724; /* Warna teks lebih gelap untuk kontras */
 }
 
-/* Chat Form */
-.chat-form {
-    margin-top: 20px;
+.chat-message.admin-message strong {
+    color: #155724; /* Warna nama admin */
 }
 
-.chat-form label {
-    font-weight: 500;
-    display: block;
-    margin-bottom: 6px;
+.chat-message.admin-message small {
+    color: #721c24; /* Warna timestamp admin */
+}
+
+/* Opsional: Jika Anda ingin pesan user juga punya warna spesifik */
+.chat-message.user-message {
+    background-color: #ffe4d2; /* Warna oranye lembut untuk user biasa */
     color: #333;
 }
-
-.chat-form textarea {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    resize: none;
-    font-size: 1em;
-    font-family: inherit;
-    background: #fff;
-}
-
-.chat-form input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 1em;
-    background: #f9f9f9;
-}
-
-.chat-form button {
-    margin-top: 10px;
-    background-color: #ff6347;
-    border: none;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.chat-form button:hover {
-    background-color: #e5533d;
-}
-
-
-/* Responsive */
-@media screen and (max-width: 768px) {
-    .user-actions {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 90%;
-    }
-
-    .welcome-section h2 {
-        font-size: 2em;
-        
-       
-    }
-
-    nav{
-      display: flex;
-      flex-direction: column;
-    }
-}
-
-
-
-
-  
-  /* Tablet (481px–768px) */
-  @media (min-width: 481px) and (max-width: 768px) {
-    .feed {
-      gap: 18px;
-    }
-    .card {
-      flex: 1 1 45%; /* 2 kolom */
-      max-width: 45%;
-    }
-    .card-img {
-      height: 180px;
-    }
-
-    nav{
-      display: flex;
-      flex-direction: column;
-    }
-}
-  
-  
-  /* Desktop kecil-menengah (769px–1024px) */
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .feed {
-      gap: 20px;
-    }
-    .card {
-      flex: 1 1 30%; /* 3 kolom */
-      max-width: 30%;
-    }
-    .card-img {
-      height: 180px;
-    }
-
-    
+  .showfood {
+      padding: 20px;
+      border-radius: 10px;
   }
-  
+  .showfood .card-img {
+      height: 250px;
+  }
+  .showfood h2 {
+      font-size: 1.8em;
+  }
+  .showfood .card-body p {
+      font-size: 1em;
+  }
+}
 
-  
+@media screen and (max-width: 480px) {
+  header h1 {
+      font-size: 22px;
+  }
+  nav a {
+      font-size: 14px;
+  }
+  .welcome-section h2 {
+      font-size: 2em;
+  }
+  .welcome-section p {
+      font-size: 1em;
+  }
+  .dashboard-card h3 {
+      font-size: 1.2em;
+  }
+  .dashboard-card p {
+      font-size: 0.9em;
+  }
+  .chat-container {
+      width: 100%;
+      margin: 20px auto;
+      padding: 15px;
+      box-shadow: none; /* Hilangkan shadow di mobile super kecil */
+      border-radius: 0;
+  }
+}

@@ -15,4 +15,10 @@ class Review {
         $stmt->execute([$food_id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function deleteById($id) {
+        $pdo = Database::getConnection();
+        $stmt = $pdo->prepare("DELETE FROM reviews WHERE id = ?");
+        $stmt->execute([$id]);
+    }
 }

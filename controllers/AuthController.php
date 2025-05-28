@@ -5,6 +5,16 @@ define('BASE_URL', dirname($_SERVER['PHP_SELF']));
 
 class AuthController {
     public function showLogin() {
+        if (isset($_SESSION['user']) && isset($_SESSION['role'])) {
+            if ($_SESSION['role'] === 'admin') {
+                header('Location: ?route=admin/dashboard');
+            } else {
+                header('Location: ?route=user/dashboard');
+            }
+            exit;
+        }
+    
+        // Jika belum login, tampilkan halaman login
         include __DIR__ . '/../views/auth/login.php';
     }
 

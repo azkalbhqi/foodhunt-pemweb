@@ -26,6 +26,12 @@ class Bundling {
         return false;
     }
 
+    public static function getTotalBundles() {
+        $db = Database::getConnection(); // Mendapatkan koneksi setiap kali dipanggil
+        $stmt = $db->query("SELECT COUNT(*) AS total FROM bundling");
+        return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+    }
+
     public static function update($id, $data) {
         $db = Database::getConnection();
         $stmt = $db->prepare("UPDATE bundling SET title=?, description=?, price=?, image_url=? WHERE id=?");

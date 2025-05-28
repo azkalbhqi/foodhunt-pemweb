@@ -11,11 +11,13 @@ class FoodController {
     
     public function index() {
         $foods = Food::all();
+        $headTitles = "Admin Makanan";
         include __DIR__ . '/../views/admin/food/index.php';
     }
 
     public function create() {
         $this->IsAdmin();
+        $headTitles = "Tambah Makanan";
         include __DIR__ . '/../views/admin/food/create.php';
     }
 
@@ -50,12 +52,6 @@ class FoodController {
         Food::create($data);
         header('Location: ?route=admin/food');
         exit;
-    }
-
-    public function edit($id) {
-        $this->IsAdmin();
-        $food = Food::find($id);
-        include __DIR__ . '/../views/admin/food/edit.php';
     }
     
     public function update($id) {

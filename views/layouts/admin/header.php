@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8" />
-    <title>Dashboard Admin - FoodHunt</title>
+    <title><?= isset($headTitles) ? $headTitles . ' - FoodHunt' : 'Dashboard Admin - FoodHunt' ?></title>
     <link rel="stylesheet" href="assets\css\adminStyle.css">
 </head>
 <body>
@@ -17,7 +17,9 @@
         <a href="?route=admin/event">Event</a>
         <a href="?route=admin/promo">Promo</a>
         <a href="?route=admin/forum">Forum</a>
+        <a href="?route=admin/profile">Profile</a>
         <a href="?route=auth/logout">Logout</a>
     </nav>
 </header>
 <div class="container">
+

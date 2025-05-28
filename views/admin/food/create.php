@@ -1,49 +1,62 @@
 <?php include __DIR__ . '/../../layouts/admin/header.php'; ?>
+
 <h2>Tambah Makanan</h2>
 
-<form id="foodForm" enctype="multipart/form-data">
-    <label>Nama Makanan</label><br>
-    <input type="text" name="name" required><br><br>
+<div class="container-form-and-lists"> <form id="foodForm" enctype="multipart/form-data" class="modern-form"> <label for="name">Nama Makanan</label>
+        <input type="text" id="name" name="name" required>
 
-    <label>Deskripsi</label><br>
-    <textarea name="description" required></textarea><br><br>
+        <label for="description">Deskripsi</label>
+        <textarea id="description" name="description" rows="5" required></textarea>
 
-    <label>Harga</label><br>
-    <input type="number" name="price" step="0.01" required><br><br>
+        <label for="price">Harga</label>
+        <input type="number" id="price" name="price" step="0.01" required>
 
-    <label>Upload Gambar</label><br>
-    <input type="file" name="image" required><br><br>
+        <label for="image">Upload Gambar</label>
+        <input type="file" id="image" name="image" required>
 
-    <button type="submit">Simpan</button>
-</form>
+        <div class="form-actions"> <button type="submit" class="button">Simpan</button>
+            <a class="button-link" href="?route=admin/food">Kembali ke Daftar Makanan</a> </div>
+    </form>
+</div>
 
 <script>
 document.getElementById('foodForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    e.preventDefault(); // Mencegah form dari submit default
 
     const form = e.target;
     const formData = new FormData(form);
-    const btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    btn.textContent = 'Menyimpan...';
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    // Menonaktifkan tombol dan mengubah teks
+    submitButton.disabled = true;
+    submitButton.textContent = 'Menyimpan...';
 
     fetch('?route=admin/food/store', {
         method: 'POST',
         body: formData,
     })
-    .then(response => response.text())  // Sesuaikan jika respon JSON
+    .then(response => {
+        if (!response.ok) {
+            // Jika respons bukan 2xx (misal 400, 500), throw error
+            return response.text().then(text => { throw new Error(text) });
+        }
+        return response.text(); // Atau response.json() jika PHP mengembalikan JSON
+    })
     .then(data => {
         alert('Makanan berhasil disimpan!');
-        form.reset();
+        form.reset(); // Mengatur ulang form setelah berhasil
     })
-    .catch(err => {
-        alert('Terjadi kesalahan saat menyimpan makanan.');
-        console.error(err);
+    .catch(error => {
+        // Menangani error yang dilempar dari .then() atau fetch itu sendiri
+        console.error('Terjadi kesalahan:', error);
+        alert('Terjadi kesalahan saat menyimpan makanan: ' + error.message);
     })
     .finally(() => {
-        btn.disabled = false;
-        btn.textContent = 'Simpan';
+        // Mengaktifkan kembali tombol dan mengembalikan teks aslinya
+        submitButton.disabled = false;
+        submitButton.textContent = 'Simpan';
     });
 });
 </script>
+
 <?php include __DIR__ . '/../../layouts/admin/footer.php'; ?>

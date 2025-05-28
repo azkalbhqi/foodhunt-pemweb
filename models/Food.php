@@ -23,6 +23,12 @@ class Food {
         ]);
     }
 
+    public static function getTotalFoods() {
+        $db = Database::getConnection(); // Mendapatkan koneksi setiap kali dipanggil
+        $stmt = $db->query("SELECT COUNT(*) AS total FROM foods");
+        return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+    }
+
     public static function update($id, $data) {
         $db = Database::getConnection();
         $stmt = $db->prepare("UPDATE foods SET name = ?, description = ?, price = ?, image_url = ? WHERE id = ?");

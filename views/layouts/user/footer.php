@@ -6,3 +6,4 @@
         <a href="?route=auth/logout">Logout</a>
     </p>
 </footer>
+</html>

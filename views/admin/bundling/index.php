@@ -27,7 +27,7 @@
                 <td>Rp <?= number_format($bundle['price'], 0, ',', '.') ?></td>
                 <td>
                     <?php if ($bundle['image_url']): ?>
-                        <img src="/foodhunt/public/uploads/<?= htmlspecialchars($bundle['image_url']) ?>" alt="Gambar paket" class="thumbnail">
+                        <img src="public/uploads/<?= htmlspecialchars($bundle['image_url']) ?>" alt="Gambar paket" class="thumbnail">
                     <?php else: ?>
                         <span class="no-image">Tidak ada gambar</span>
                     <?php endif; ?>

@@ -14,17 +14,18 @@ class BundlingController {
     public function index() {
         $bundles = Bundling::all();
         if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin'){
-            
+            $headTitles = 'Admin Paket';
             include __DIR__ . '/../views/user/bundling/index.php';
         }else{
-            
+            $headTitles = 'Paket spesial';
             include __DIR__ . '/../views/admin/bundling/index.php';
         }
     }
 
     public function create() {
         $this->IsAdmin();
-        $foods = Food::all(); // ambil daftar makanan untuk dipilih
+        $foods = Food::all(); 
+        $headTitles = 'Tambah Makanan';// ambil daftar makanan untuk dipilih
         include __DIR__ . '/../views/admin/bundling/create.php';
     }
 
@@ -81,6 +82,7 @@ class BundlingController {
 
     public function edit($id) {
         $this->IsAdmin();
+        $headTitles = 'Edit Paket';
         $bundle = Bundling::find($id);
         $foods = Food::all();
         $bundleItems = Bundling::getBundleItems($id);

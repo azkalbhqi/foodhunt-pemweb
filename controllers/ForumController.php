@@ -5,12 +5,14 @@ class ForumController {
     // Halaman untuk user (tidak ada tombol hapus)
     public function userIndex() {
         $messages = ForumMessage::all();
+        $headTitles = 'Forum';
         include __DIR__ . '/../views/user/forum/index.php';
     }
 
     // Halaman admin (ada tombol hapus)
     public function adminIndex() {
         $messages = ForumMessage::all();
+        $headTitles = "Admin Forum";
         include __DIR__ . '/../views/admin/forum/index.php';
     }
 
@@ -43,7 +45,7 @@ class ForumController {
         }
 
         ForumMessage::delete($id);
-        header('Location: ?route=forum/admin');
+        header('Location: ?route=admin/forum');
         exit;
     }
 }

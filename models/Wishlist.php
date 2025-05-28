@@ -47,6 +47,24 @@ class Wishlist {
     return $stmt->execute([$userId, $foodId]);
 }
 
+public static function deleteById($id) {
+    $pdo = Database::getConnection();
+    $stmt = $pdo->prepare("DELETE FROM wishlists WHERE id = ?");
+    $stmt->execute([$id]);
+}
+
+public static function getByFoodId($food_id) {
+    $db = Database::getConnection();
+    $stmt = $db->prepare("
+        SELECT w.*, u.username, u.email 
+        FROM wishlists w
+        JOIN users u ON w.user_id = u.id
+        WHERE w.food_id = ?
+    ");
+    $stmt->execute([$food_id]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
     
     
 }
